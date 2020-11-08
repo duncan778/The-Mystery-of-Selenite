@@ -1,12 +1,12 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
 
 
-public class PlayerMovingRB : MonoBehaviour
+public class PlayerMovingCC : MonoBehaviour
 {
-    Rigidbody playerRb;
+    CharacterController playerCC;
     GameObject playerVisual;
     // Animator playerAn;
     [SerializeField] float walkSpeed = 1.5f;
@@ -16,7 +16,7 @@ public class PlayerMovingRB : MonoBehaviour
     void Start()
     {
         // playerAn = GetComponent<Animator>();
-        playerRb = GetComponent<Rigidbody>();
+        playerCC = GetComponent<CharacterController>();
         playerVisual = transform.GetChild(0).gameObject;
     }
 
@@ -29,14 +29,14 @@ public class PlayerMovingRB : MonoBehaviour
 
             if (x != 0 || v != 0)
             {
-                playerVisual.transform.LookAt(playerVisual.transform.position + new Vector3(x, 0, v));
+                transform.LookAt(transform.position + new Vector3(x, 0, v));
             }
-            else if (playerRb.velocity.magnitude > 0)
+            else if (playerCC.velocity.magnitude > 0)
             {
-                playerVisual.transform.LookAt(playerVisual.transform.position + new Vector3(playerRb.velocity.x,0,playerRb.velocity.z));
+                transform.LookAt(transform.position + new Vector3(playerCC.velocity.x,0,playerCC.velocity.z));
             }
 
-            playerRb.AddForce(playerVisual.transform.forward * (float)Math.Sqrt(x * x + v * v) * walkSpeed * Time.deltaTime);
+            playerCC.Move(transform.forward * (float)Math.Sqrt(x * x + v * v) * walkSpeed * Time.deltaTime);
 
             if (v != 0 || x != 0)
                 {
