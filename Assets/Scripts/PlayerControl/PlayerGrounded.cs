@@ -9,7 +9,7 @@ public class PlayerGrounded : MonoBehaviour
     Transform groundCheck;
     public LayerMask groundMask;
 
-    private void Update() 
+    private void FixedUpdate() 
     {
         IsOnGround = Physics.CheckSphere(new Vector3(transform.position.x, 
                                                     transform.position.y - 1,

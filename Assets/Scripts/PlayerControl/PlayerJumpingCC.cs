@@ -17,7 +17,7 @@ public class PlayerJumpingCC : MonoBehaviour
         playerCC = GetComponent<CharacterController>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!IsGameOver)
         {
