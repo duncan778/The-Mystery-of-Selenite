@@ -10,7 +10,6 @@ public class PlayerMovingRB : MonoBehaviour
     GameObject playerVisual;
     // Animator playerAn;
     [SerializeField] float walkSpeed = 1.5f;
-    [SerializeField] float rotSpeed = 1f;
     public bool IsGameOver { get; set; }
 
 
