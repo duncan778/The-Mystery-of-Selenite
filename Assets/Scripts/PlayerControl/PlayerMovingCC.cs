@@ -11,6 +11,7 @@ public class PlayerMovingCC : MonoBehaviour
     // Animator playerAn;
     [SerializeField] float walkSpeed = 1.5f;
     public bool IsGameOver { get; set; }
+    Transform cameraTr;
 
 
     void Start()
@@ -18,6 +19,7 @@ public class PlayerMovingCC : MonoBehaviour
         // playerAn = GetComponent<Animator>();
         playerCC = GetComponent<CharacterController>();
         playerVisual = transform.GetChild(0).gameObject;
+        cameraTr = GameObject.Find("Main Camera").transform;
     }
 
     void FixedUpdate()
@@ -29,11 +31,9 @@ public class PlayerMovingCC : MonoBehaviour
 
             if (x != 0 || v != 0)
             {
-                transform.LookAt(transform.position + new Vector3(x, 0, v));
-            }
-            else if (playerCC.velocity.magnitude > 0)
-            {
-                transform.LookAt(transform.position + new Vector3(playerCC.velocity.x,0,playerCC.velocity.z));
+                //transform.LookAt(transform.position + new Vector3(x, 0, v));
+                transform.rotation = Quaternion.LookRotation(new Vector3(x, 0, v), Vector3.up);
+                transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + cameraTr.eulerAngles.y, transform.eulerAngles.z);
             }
 
             playerCC.Move(transform.forward * (float)Math.Sqrt(x * x + v * v) * walkSpeed * Time.deltaTime);

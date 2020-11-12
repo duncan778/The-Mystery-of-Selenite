@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 202636970}
   - component: {fileID: 202636969}
   m_Layer: 0
-  m_Name: TerrainGroup_0
+  m_Name: MoonTerrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -430,8 +431,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55983845671ab3af3803f83fcad253b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraOffset: {x: 0, y: 15, z: -15}
+  cameraOffset: {x: 0, y: 8, z: -20}
   maxDistance: 20
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 009ae5086d125ffc5ae38cba64007222, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensitivity: 4
 --- !u!1 &1720006832
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +494,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 60
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -497,7 +511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1c4cf1732a7741781e743e438b69ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
+  walkSpeed: 7.5
 --- !u!114 &1720006836
 MonoBehaviour:
   m_ObjectHideFlags: 0
