@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class PlayerJumpingCC : MonoBehaviour
 {
-    // Animator playerAn;
+    Animator playerAn;
     CharacterController playerCC;
+    
+    private GameObject playerAvatar;
+    public GameObject PlayerAvatar
+    {
+        get { return playerAvatar; }
+        set { playerAvatar = value; 
+            playerAn = playerAvatar.GetComponent<Animator>();
+            }
+    }
+
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float gravity = 10f;
     public bool IsGameOver { get; set; }
@@ -13,7 +23,7 @@ public class PlayerJumpingCC : MonoBehaviour
 
     void Start()
     {
-        // playerAn = GetComponent<Animator>();
+        playerAn = PlayerAvatar.GetComponent<Animator>();
         playerCC = GetComponent<CharacterController>();
     }
 
@@ -23,8 +33,8 @@ public class PlayerJumpingCC : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) && GetComponent<PlayerGrounded>().IsOnGround)
             {   
+                playerAn.SetTrigger("Jump");
                 way = new Vector3(0, jumpForce, 0);
-                // playerAn.SetTrigger("Jump");
             }
             way.y -= Time.deltaTime * gravity;
             playerCC.Move(way * Time.deltaTime);

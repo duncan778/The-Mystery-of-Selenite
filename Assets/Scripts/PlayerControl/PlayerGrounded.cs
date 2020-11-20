@@ -12,7 +12,7 @@ public class PlayerGrounded : MonoBehaviour
     private void FixedUpdate() 
     {
         IsOnGround = Physics.CheckSphere(new Vector3(transform.position.x, 
-                                                    transform.position.y - 1,
+                                                    transform.position.y - 0.95f,
                                                     transform.position.z), groundDistance, groundMask);
     }
 

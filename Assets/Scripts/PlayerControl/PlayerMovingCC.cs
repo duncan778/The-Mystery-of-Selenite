@@ -7,18 +7,26 @@ using System;
 public class PlayerMovingCC : MonoBehaviour
 {
     CharacterController playerCC;
-    GameObject playerVisual;
-    // Animator playerAn;
-    [SerializeField] float walkSpeed = 1.5f;
+    private GameObject playerAvatar;
+    public GameObject PlayerAvatar
+    {
+        get { return playerAvatar; }
+        set { playerAvatar = value; 
+            playerAn = playerAvatar.GetComponent<Animator>();
+            }
+    }
+    
+    public float WalkSpeed { get; set; }
+
+    Animator playerAn;
     public bool IsGameOver { get; set; }
     Transform cameraTr;
 
 
     void Start()
     {
-        // playerAn = GetComponent<Animator>();
+        playerAn = PlayerAvatar.GetComponent<Animator>();
         playerCC = GetComponent<CharacterController>();
-        playerVisual = transform.GetChild(0).gameObject;
         cameraTr = GameObject.Find("Main Camera").transform;
     }
 
@@ -31,27 +39,26 @@ public class PlayerMovingCC : MonoBehaviour
 
             if (x != 0 || v != 0)
             {
-                //transform.LookAt(transform.position + new Vector3(x, 0, v));
                 transform.rotation = Quaternion.LookRotation(new Vector3(x, 0, v), Vector3.up);
                 transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + cameraTr.eulerAngles.y, transform.eulerAngles.z);
             }
 
-            playerCC.Move(transform.forward * (float)Math.Sqrt(x * x + v * v) * walkSpeed * Time.deltaTime);
+            playerCC.Move(transform.forward * (float)Math.Sqrt(x * x + v * v) * WalkSpeed * Time.deltaTime);
 
-            if (v != 0 || x != 0)
+            if ((v != 0 || x != 0) && !Input.GetKeyDown(KeyCode.Space))
                 {
-                    // playerAn.SetBool("Walk", true);
+                    playerAn.SetBool("Walk", true);
                     // StepSound();
                 }
-            else
+            else if (!Input.GetKeyDown(KeyCode.Space))
             {
-                // playerAn.SetBool("Walk", false);
+                playerAn.SetBool("Walk", false);
             }
             
         }
         else
         {
-            // playerAn.SetBool("Walk", false);
+            playerAn.SetBool("Walk", false);
         }
         
     }
