@@ -16,7 +16,7 @@ public class PlayerMovingCC : MonoBehaviour
             }
     }
     
-    public float WalkSpeed { get; set; }
+    public float Speed { get; set; }
 
     Animator playerAn;
     public bool IsGameOver { get; set; }
@@ -25,7 +25,7 @@ public class PlayerMovingCC : MonoBehaviour
 
     void Start()
     {
-        playerAn = PlayerAvatar.GetComponent<Animator>();
+        // playerAn = PlayerAvatar.GetComponent<Animator>();
         playerCC = GetComponent<CharacterController>();
         cameraTr = GameObject.Find("Main Camera").transform;
     }
@@ -43,7 +43,7 @@ public class PlayerMovingCC : MonoBehaviour
                 transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + cameraTr.eulerAngles.y, transform.eulerAngles.z);
             }
 
-            playerCC.Move(transform.forward * (float)Math.Sqrt(x * x + v * v) * WalkSpeed * Time.deltaTime);
+            playerCC.Move(transform.forward * (float)Math.Sqrt(x * x + v * v) * Speed * Time.deltaTime);
 
             if ((v != 0 || x != 0) && !Input.GetKeyDown(KeyCode.Space))
                 {

@@ -23,7 +23,7 @@ public class PlayerJumpingCC : MonoBehaviour
 
     void Start()
     {
-        playerAn = PlayerAvatar.GetComponent<Animator>();
+        // playerAn = PlayerAvatar.GetComponent<Animator>();
         playerCC = GetComponent<CharacterController>();
     }
 
