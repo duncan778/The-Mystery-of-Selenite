@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerEquipment : MonoBehaviour
+public class PlayerEquipment : PlayerManager
 {
     public GameObject selenit;
     public GameObject scafandr;
     [SerializeField] float walkSpeed = 3.75f;
     [SerializeField] float runSpeed = 7.5f;
-
+    bool isSelenit;
 
     void Awake()
     {
@@ -19,7 +19,7 @@ public class PlayerEquipment : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (GetComponent<PlayerMovingCC>().PlayerAvatar == selenit)
+            if (isSelenit)
             {
                 SetScafandr();
             }
@@ -32,18 +32,18 @@ public class PlayerEquipment : MonoBehaviour
 
     void SetSelenit()
     {
-        GetComponent<PlayerMovingCC>().PlayerAvatar = selenit;
-        GetComponent<PlayerJumpingCC>().PlayerAvatar = selenit;
-        GetComponent<PlayerMovingCC>().Speed = runSpeed;
+        isSelenit = true;
+        playerAn = selenit.GetComponent<Animator>();
+        speed = runSpeed;
         selenit.SetActive(true);
         scafandr.SetActive(false);
     }
 
     void SetScafandr()
     {
-        GetComponent<PlayerMovingCC>().PlayerAvatar = scafandr;
-        GetComponent<PlayerJumpingCC>().PlayerAvatar = scafandr;
-        GetComponent<PlayerMovingCC>().Speed = walkSpeed;
+        isSelenit = false;
+        playerAn = scafandr.GetComponent<Animator>();
+        speed = walkSpeed;
         scafandr.SetActive(true);
         selenit.SetActive(false);
     }

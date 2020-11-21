@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGrounded : MonoBehaviour
+public class PlayerGrounded : PlayerManager
 {
-    public bool IsOnGround { get; private set; }
     [SerializeField] float groundDistance = 0.2f;
     Transform groundCheck;
     public LayerMask groundMask;
 
     private void FixedUpdate() 
     {
-        IsOnGround = Physics.CheckSphere(new Vector3(transform.position.x, 
+        isOnGround = Physics.CheckSphere(new Vector3(transform.position.x, 
                                                     transform.position.y - 0.95f,
                                                     transform.position.z), groundDistance, groundMask);
     }

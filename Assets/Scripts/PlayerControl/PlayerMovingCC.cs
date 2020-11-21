@@ -4,29 +4,13 @@ using UnityEngine;
 using System;
 
 
-public class PlayerMovingCC : MonoBehaviour
+public class PlayerMovingCC : PlayerManager
 {
-    CharacterController playerCC;
-    private GameObject playerAvatar;
-    public GameObject PlayerAvatar
-    {
-        get { return playerAvatar; }
-        set { playerAvatar = value; 
-            playerAn = playerAvatar.GetComponent<Animator>();
-            }
-    }
-    
-    public float Speed { get; set; }
 
-    Animator playerAn;
-    public bool IsGameOver { get; set; }
     Transform cameraTr;
-
 
     void Start()
     {
-        // playerAn = PlayerAvatar.GetComponent<Animator>();
-        playerCC = GetComponent<CharacterController>();
         cameraTr = GameObject.Find("Main Camera").transform;
     }
 
@@ -40,10 +24,12 @@ public class PlayerMovingCC : MonoBehaviour
             if (x != 0 || v != 0)
             {
                 transform.rotation = Quaternion.LookRotation(new Vector3(x, 0, v), Vector3.up);
-                transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + cameraTr.eulerAngles.y, transform.eulerAngles.z);
+                transform.rotation = Quaternion.Euler(transform.eulerAngles.x, 
+                                                      transform.eulerAngles.y + cameraTr.eulerAngles.y, 
+                                                      transform.eulerAngles.z);
             }
 
-            playerCC.Move(transform.forward * (float)Math.Sqrt(x * x + v * v) * Speed * Time.deltaTime);
+            playerCC.Move(transform.forward * (float)Math.Sqrt(x * x + v * v) * speed * Time.deltaTime);
 
             if ((v != 0 || x != 0) && !Input.GetKeyDown(KeyCode.Space))
                 {
