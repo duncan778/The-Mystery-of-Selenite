@@ -5,50 +5,119 @@ using UnityEngine;
 public class CurveMotion
 {
     private Transform[] wayPoints;
-    private bool cycled;
+    private bool cycled = true;
     private GameObject npc;
-    private float speed;
+    private float speed = 1;
+    private bool forward = true;
 
     private int pointsCount;
     private int targetIndex;
     private Transform targetTransform;
+    private int passedIndex;
 
-    public CurveMotion(GameObject npc, Transform[] wayPoints, bool cycled, float speed)
+
+    public CurveMotion(GameObject npc, Transform[] wayPoints)
     {
-        this.cycled = cycled;
         this.npc = npc;
-        this.speed = speed;
         pointsCount = wayPoints.Length;
         this.wayPoints = new Transform[pointsCount];
         for (int i = 0; i < pointsCount; i++)
         {
             this.wayPoints[i] = wayPoints[i];
         }
-
-        //MoveInit
         targetIndex = 0;
         targetTransform = this.wayPoints[targetIndex];
-        lookAtWayPoint();
+        passedIndex = pointsCount-1;
+        LookAtWayPoint();
+
+
     }
 
-    public void Move()
+    public void MoveSetup(float speed, bool forward = true, bool cycled = true)
     {
+        this.cycled = cycled;
+        this.speed = speed;
+        if (forward != this.forward)
+        {
+            ChangeDirection();
+        }
+        this.forward = forward;
+    }
+
+    private void ChangeDirection()
+    {
+        int tempIndex = targetIndex;
+        targetIndex = passedIndex;
+        passedIndex = tempIndex;
+        targetTransform = wayPoints[targetIndex];
+        LookAtWayPoint();
+    }
+
+    public bool Move(Transform comparePoint = null)
+    {
+        bool targetCompleted = false;
         npc.transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
-        lookAtWayPoint();
+        LookAtWayPoint();
         Vector3 wayVector = targetTransform.position - npc.transform.position;
         float wayLength = wayVector.sqrMagnitude;
         if (wayLength <= 0.1f)
         {
-            targetIndex++;
-            if (targetIndex == pointsCount)
+            if (forward)
             {
-                targetIndex = 0;
+                targetIndex++;
+
+                if (cycled)
+                {
+                    if (targetIndex == pointsCount)
+                    {
+                        targetIndex = 0;
+                        passedIndex = pointsCount-1;
+                    }
+                }
+                else
+                {
+                    //ChangeDirection
+                    if (targetIndex == pointsCount)
+                    {
+                        targetIndex = pointsCount-2;
+                        passedIndex = pointsCount-1;
+                        forward = false;
+                    }
+                }
             }
-            targetTransform = this.wayPoints[targetIndex];
+            else //backward
+            {
+                targetIndex--;
+
+                if (cycled)
+                {
+                    if (targetIndex == -1)
+                    {
+                        targetIndex = pointsCount-1;
+                        passedIndex = 0;
+                    }
+                }
+                else
+                {
+                    //ChangeDirection
+                    if (targetIndex == -1)
+                    {
+                        targetIndex = 1;
+                        passedIndex = 0;
+                        forward = true;
+                    }
+                }
+            }
+        targetTransform = wayPoints[targetIndex];
+
+        if (wayPoints[passedIndex] == comparePoint)
+            targetCompleted = true;
         }
+
+        return targetCompleted;
     }
 
-    private void lookAtWayPoint()
+    private void LookAtWayPoint()
     {
         targetTransform.position = new Vector3(targetTransform.position.x,
                                                npc.transform.position.y,

@@ -608,6 +608,7 @@ MonoBehaviour:
   - {fileID: 1525735429}
   - {fileID: 485922342}
   speed: 2
+  comparePoint1: {fileID: 485922342}
 --- !u!1001 &73229408
 PrefabInstance:
   m_ObjectHideFlags: 0

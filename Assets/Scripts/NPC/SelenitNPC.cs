@@ -7,13 +7,15 @@ public class SelenitNPC : MonoBehaviour
     public NPCState SelenitState { get; set; }
     public Transform[] wayPoints;
     [SerializeField] float speed = 1;
+    public Transform comparePoint1;
 
     CurveMotion selenit1;
 
     void Start()
     {
         SelenitState = NPCState.Walk;
-        selenit1 = new CurveMotion(this.gameObject, wayPoints, cycled: true, speed);
+        selenit1 = new CurveMotion(this.gameObject, wayPoints);
+        selenit1.MoveSetup(speed, forward: true, cycled: true);
     }
 
     void Update()
@@ -24,7 +26,7 @@ public class SelenitNPC : MonoBehaviour
             {
                 case NPCState.Walk:
                 {
-                    selenit1.Move();
+                    bool result = selenit1.Move(comparePoint1);
                 }
                 break;
 
