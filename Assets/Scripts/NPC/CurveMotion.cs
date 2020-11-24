@@ -29,8 +29,6 @@ public class CurveMotion
         targetTransform = this.wayPoints[targetIndex];
         passedIndex = pointsCount-1;
         LookAtWayPoint();
-
-
     }
 
     public void MoveSetup(float speed, bool forward = true, bool cycled = true)
@@ -60,10 +58,11 @@ public class CurveMotion
         LookAtWayPoint();
         Vector3 wayVector = targetTransform.position - npc.transform.position;
         float wayLength = wayVector.sqrMagnitude;
-        if (wayLength <= 0.1f)
+        if (wayLength <= 0.01f)
         {
             if (forward)
             {
+                passedIndex = targetIndex;
                 targetIndex++;
 
                 if (cycled)
@@ -87,6 +86,7 @@ public class CurveMotion
             }
             else //backward
             {
+                passedIndex = targetIndex;
                 targetIndex--;
 
                 if (cycled)
@@ -124,4 +124,10 @@ public class CurveMotion
                                                targetTransform.position.z);
         npc.transform.LookAt(targetTransform);
     }
+
+    public void RotateToPoint(Transform comparePoint1)
+    {
+        npc.transform.rotation = comparePoint1.rotation;
+    }
+
 }
