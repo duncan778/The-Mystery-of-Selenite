@@ -15,5 +15,4 @@ public class PlayerManager : MonoBehaviour
         playerCC = GetComponent<CharacterController>();
     }
 
-
 }

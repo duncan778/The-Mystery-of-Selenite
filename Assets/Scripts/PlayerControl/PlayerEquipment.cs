@@ -10,9 +10,16 @@ public class PlayerEquipment : PlayerManager
     [SerializeField] float runSpeed = 7.5f;
     bool isSelenit;
 
+    private PlayerObjects playerObjects;
+
     void Awake()
     {
         SetSelenit();
+    }
+
+    private void Start()
+    {
+        playerObjects = GetComponent<PlayerObjects>();
     }
 
     void Update()
@@ -36,15 +43,43 @@ public class PlayerEquipment : PlayerManager
         playerAn = selenit.GetComponent<Animator>();
         speed = runSpeed;
         selenit.SetActive(true);
+        selenit.transform.GetChild(0).gameObject.SetActive(false); //Helmet
         scafandr.SetActive(false);
     }
 
     void SetScafandr()
     {
-        isSelenit = false;
-        playerAn = scafandr.GetComponent<Animator>();
-        speed = walkSpeed;
-        scafandr.SetActive(true);
-        selenit.SetActive(false);
+        if (playerObjects.Helmet || playerObjects.Scafandr)
+        {
+            isSelenit = false;
+            if (playerObjects.Scafandr)
+            {
+                scafandr.SetActive(true);
+                selenit.SetActive(false);
+                playerAn = scafandr.GetComponent<Animator>();
+                speed = walkSpeed;
+
+                if (playerObjects.Helmet)
+                {
+                    scafandr.transform.GetChild(0).gameObject.SetActive(false); //Selenit head
+                    scafandr.transform.GetChild(1).gameObject.SetActive(true); //Helmet
+                }
+                else
+                {
+                    scafandr.transform.GetChild(0).gameObject.SetActive(true); //Selenit head
+                    scafandr.transform.GetChild(1).gameObject.SetActive(false); //Helmet
+                }
+            }
+            else //Helmet only
+            {
+                scafandr.SetActive(false);
+                selenit.SetActive(true);
+                selenit.transform.GetChild(0).gameObject.SetActive(true); //Helmet
+                playerAn = selenit.GetComponent<Animator>();
+                speed = runSpeed;
+
+            }
+        }
+        
     }
 }

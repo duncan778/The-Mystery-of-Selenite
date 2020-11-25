@@ -8,7 +8,7 @@ public class Dialog : MonoBehaviour
 {
     private string[] sentences = {"привет", "Привет 2"};
     private int currentIndex = 0;
-    [SerializeField] GameObject dialogPanelPr;
+    [SerializeField] GameObject dialogPanelPr = null;
 
     private Text dialogText;
     private GameObject dialogPanel;

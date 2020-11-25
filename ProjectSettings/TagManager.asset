@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Coin
+  - Helmet
+  - Scafandr
+  - Fruit
+  - Wrench
   layers:
   - Default
   - TransparentFX

@@ -16,12 +16,18 @@ public class SelenitNPC : MonoBehaviour
     CurveMotion selenit1;
     private Animator NPCAnimator;
 
-    [SerializeField] Dialog dialogPr;
+    [SerializeField] Dialog dialogPr = null;
     private Dialog dialog;
 
     private bool questCompleted = false;
 
     [SerializeField] string[] sentences;
+    [SerializeField] string objectName = "";
+    [SerializeField] int changeAmount = 0;
+    [SerializeField] GameObject gameObjectOff = null;
+    [SerializeField] GameObject gameObjectOn = null;
+
+    private PlayerObjects playerObjects;
 
     void Start()
     {
@@ -31,6 +37,7 @@ public class SelenitNPC : MonoBehaviour
         selenit1.MoveSetup(speed, forward: true, cycled: true);
         selenit1.RotateToPoint(comparePoint1);
         currentTime = Time.time;
+        playerObjects = GameObject.Find("Player").GetComponent<PlayerObjects>();
     }
 
     void Update()
@@ -56,7 +63,6 @@ public class SelenitNPC : MonoBehaviour
                 {
                     if (Time.time - currentTime > idleTime)
                     {
-                        // selenit1.MoveSetup(speed, forward: true, cycled: true);
                         NPCAnimator.SetBool("Walk", true);
                         SelenitState = NPCState.Walk;
                     }
@@ -65,7 +71,30 @@ public class SelenitNPC : MonoBehaviour
 
                 case NPCState.Talk:
                 {
-
+                    if (Input.GetKeyDown(KeyCode.Y))
+                    {
+                        if (playerObjects.Change(objectName, changeAmount))
+                        {
+                            if (gameObjectOff != null)
+                            {
+                                gameObjectOff.SetActive(false);
+                            }
+                            if (gameObjectOn != null)
+                            {
+                                gameObjectOn.SetActive(true);
+                            }
+                            questCompleted = true;
+                        }
+                        Destroy(dialog);
+                        SelenitState = NPCState.Walk;
+                        NPCAnimator.SetBool("Walk", true);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.N))
+                    {
+                        Destroy(dialog);
+                        SelenitState = NPCState.Walk;
+                        NPCAnimator.SetBool("Walk", true);
+                    }
                 }
                 break;
 

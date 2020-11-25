@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StoneController : MonoBehaviour
 {
-    [SerializeField] static int maxPennantCount = 10;
+    [SerializeField] static int maxPennantCount = 11;
     static int pennantCount = 0;
     static GameObject stoneContainer;
     public GameObject pennantPrefab;
