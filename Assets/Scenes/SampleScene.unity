@@ -500,6 +500,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 43706182}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &61892055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 61892056}
+  m_Layer: 0
+  m_Name: PanicPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &61892056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61892055}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 242.64, y: 2.67, z: 23.88}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 420592120}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &66265775
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -624,6 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e6e9caf30c866f0ab1cd3f942ec327a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverPanel: {fileID: 1112030466}
   wayPoints:
   - {fileID: 559807792}
   - {fileID: 2074360749}
@@ -639,8 +670,10 @@ MonoBehaviour:
   - {fileID: 485922342}
   speed: 2
   workPoint: {fileID: 485922342}
+  panicPoint: {fileID: 1382596403}
   pauseTime: 7
   workAnim: Idle
+  panicAnim: Run
   dialogPr: {fileID: 8574914208711548090, guid: 186882fc13e284a598c82dbef7cad6a0,
     type: 3}
   sentences:
@@ -997,6 +1030,81 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7376148937597478269}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &136528596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 136528598}
+  - component: {fileID: 136528597}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &136528597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136528596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba5c86ef1cc9c5d6a7a60d8c8ba9ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPanel: {fileID: 105026783}
+  gameOverPanel: {fileID: 1112030466}
+--- !u!4 &136528598
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136528596}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 305.05392, y: -20.403236, z: 313.34457}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &150729182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 150729183}
+  m_Layer: 0
+  m_Name: PanicPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &150729183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150729182}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -193.31, y: -0.4300003, z: 160.06}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 909514402}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &162035673 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3982076533566247220, guid: 9cc7e10a21dcff3ea8c9cbbefdc73547,
@@ -2280,6 +2388,36 @@ Transform:
   m_Father: {fileID: 602777269}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -231.715, z: 0}
+--- !u!1 &418941071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 418941072}
+  m_Layer: 0
+  m_Name: PanicPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &418941072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418941071}
+  m_LocalRotation: {x: -0, y: -0.7063174, z: -0, w: -0.7078953}
+  m_LocalPosition: {x: -188.92, y: -0.4300003, z: 161.77}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 602777269}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: -270.128, z: 0}
 --- !u!1 &419205023
 GameObject:
   m_ObjectHideFlags: 0
@@ -2345,6 +2483,7 @@ Transform:
   - {fileID: 2119768665}
   - {fileID: 1130944503}
   - {fileID: 100255818}
+  - {fileID: 61892056}
   m_Father: {fileID: 708577825}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -66.651, z: 0}
@@ -3153,6 +3292,7 @@ Transform:
   - {fileID: 1214761730}
   - {fileID: 2014460787}
   - {fileID: 1299837569}
+  - {fileID: 418941072}
   m_Father: {fileID: 1542075003}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3284,8 +3424,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -55}
-  m_SizeDelta: {x: 200, y: 40}
+  m_AnchoredPosition: {x: 150, y: -105}
+  m_SizeDelta: {x: 200, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &683255906
 MonoBehaviour:
@@ -4411,6 +4551,7 @@ Transform:
   - {fileID: 319179072}
   - {fileID: 1906090747}
   - {fileID: 459516684}
+  - {fileID: 150729183}
   m_Father: {fileID: 768947821}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4518,6 +4659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e6e9caf30c866f0ab1cd3f942ec327a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverPanel: {fileID: 1112030466}
   wayPoints:
   - {fileID: 668737128}
   - {fileID: 1410155835}
@@ -4535,8 +4677,10 @@ MonoBehaviour:
   - {fileID: 459516684}
   speed: 2
   workPoint: {fileID: 1906090747}
+  panicPoint: {fileID: 150729183}
   pauseTime: 10
   workAnim: Work
+  panicAnim: Run
   dialogPr: {fileID: 8574914208711548090, guid: 186882fc13e284a598c82dbef7cad6a0,
     type: 3}
   sentences:
@@ -4822,7 +4966,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -120}
+  m_AnchoredPosition: {x: 150, y: -225}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1022705497
@@ -4867,7 +5011,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1022705498}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 136528597}
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1022705498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5055,6 +5210,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8347647575128871703, guid: dce6c67d8468b79fb85ee77d23d2beb2,
     type: 3}
   m_PrefabInstance: {fileID: 1063626456}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1073130971
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1956776920}
+    m_Modifications:
+    - target: {fileID: 1641819999658926782, guid: fa6de7ce504d90c1a9b563676aa39d93,
+        type: 3}
+      propertyPath: m_Name
+      value: house_low (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126607477657909252, guid: fa6de7ce504d90c1a9b563676aa39d93,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 420.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126607477657909252, guid: fa6de7ce504d90c1a9b563676aa39d93,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126607477657909252, guid: fa6de7ce504d90c1a9b563676aa39d93,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 399.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126607477657909252, guid: fa6de7ce504d90c1a9b563676aa39d93,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126607477657909252, guid: fa6de7ce504d90c1a9b563676aa39d93,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.3734536
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126607477657909252, guid: fa6de7ce504d90c1a9b563676aa39d93,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126607477657909252, guid: fa6de7ce504d90c1a9b563676aa39d93,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9276489
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126607477657909252, guid: fa6de7ce504d90c1a9b563676aa39d93,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126607477657909252, guid: fa6de7ce504d90c1a9b563676aa39d93,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126607477657909252, guid: fa6de7ce504d90c1a9b563676aa39d93,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -43.858
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126607477657909252, guid: fa6de7ce504d90c1a9b563676aa39d93,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fa6de7ce504d90c1a9b563676aa39d93, type: 3}
+--- !u!4 &1073130972 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2126607477657909252, guid: fa6de7ce504d90c1a9b563676aa39d93,
+    type: 3}
+  m_PrefabInstance: {fileID: 1073130971}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1087249513
 PrefabInstance:
@@ -5351,7 +5581,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0, y: 0}
-  m_SizeDelta: {x: 300, y: 250}
+  m_SizeDelta: {x: 300, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1112030468
 MonoBehaviour:
@@ -5481,7 +5711,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -190}
+  m_AnchoredPosition: {x: 150, y: -295}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1135795726
@@ -5526,7 +5756,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1135795727}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 136528597}
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1135795727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5802,6 +6043,7 @@ Transform:
   - {fileID: 1552496787}
   - {fileID: 1525735429}
   - {fileID: 485922342}
+  - {fileID: 1382596403}
   m_Father: {fileID: 569187039}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -66.651, z: 0}
@@ -5976,7 +6218,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1230153729}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 136528597}
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1230153729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6593,6 +6846,36 @@ Transform:
   m_Father: {fileID: 602777269}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -231.715, z: 0}
+--- !u!1 &1382596402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1382596403}
+  m_Layer: 0
+  m_Name: PanicPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1382596403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382596402}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.52, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1150938166}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1382642755
 GameObject:
   m_ObjectHideFlags: 0
@@ -7213,7 +7496,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1492974294}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 136528597}
+        m_MethodName: Credits
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1492974294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8199,6 +8493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e6e9caf30c866f0ab1cd3f942ec327a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverPanel: {fileID: 1112030466}
   wayPoints:
   - {fileID: 1721213107}
   - {fileID: 419205024}
@@ -8210,8 +8505,10 @@ MonoBehaviour:
   - {fileID: 100255818}
   speed: 2
   workPoint: {fileID: 419205024}
+  panicPoint: {fileID: 61892056}
   pauseTime: 15
   workAnim: Work
+  panicAnim: Run
   dialogPr: {fileID: 8574914208711548090, guid: 186882fc13e284a598c82dbef7cad6a0,
     type: 3}
   sentences:
@@ -8618,7 +8915,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720006832}
   m_LocalRotation: {x: -0, y: -0.70302373, z: -0, w: 0.71116644}
-  m_LocalPosition: {x: 385.08862, y: 10.675, z: 188.08766}
+  m_LocalPosition: {x: 176.6, y: 10.675, z: 318.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 543450651679767911}
@@ -9911,6 +10208,7 @@ Transform:
   - {fileID: 543450653664220350}
   - {fileID: 1233686898}
   - {fileID: 1087249514}
+  - {fileID: 1073130972}
   m_Father: {fileID: 401098256}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9995,7 +10293,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1980398591}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 136528597}
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1980398591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10295,6 +10604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e6e9caf30c866f0ab1cd3f942ec327a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverPanel: {fileID: 1112030466}
   wayPoints:
   - {fileID: 457203326}
   - {fileID: 1382642756}
@@ -10311,8 +10621,10 @@ MonoBehaviour:
   - {fileID: 1299837569}
   speed: 2
   workPoint: {fileID: 457203326}
+  panicPoint: {fileID: 418941072}
   pauseTime: 7
   workAnim: Idle
+  panicAnim: Run
   dialogPr: {fileID: 8574914208711548090, guid: 186882fc13e284a598c82dbef7cad6a0,
     type: 3}
   sentences:
