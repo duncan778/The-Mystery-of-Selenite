@@ -18,6 +18,7 @@ public class StartModule : MonoBehaviour
 
     [SerializeField] float speed;
     [SerializeField] bool moving = false;
+    public GameObject flames;
 
     public GameObject gameOverPanel;
 
@@ -43,7 +44,8 @@ public class StartModule : MonoBehaviour
                 moving = true;
                 player.SetActive(false);
                 player.transform.parent = transform;
-                //Engines start VFX
+                flames.SetActive(true); //Engines start VFX
+                
             }
             
         }
