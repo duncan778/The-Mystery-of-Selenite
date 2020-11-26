@@ -28,7 +28,7 @@ public class NPC : MonoBehaviour
     [SerializeField] Dialog dialogPr = null;
     private Dialog dialog;
 
-    [SerializeField] bool questCompleted = false;
+    public bool questCompleted = false;
 
     [SerializeField] string[] sentences;
     [SerializeField] string objectName = "";

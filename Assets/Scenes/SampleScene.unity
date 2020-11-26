@@ -676,6 +676,7 @@ MonoBehaviour:
   panicAnim: Run
   dialogPr: {fileID: 8574914208711548090, guid: 186882fc13e284a598c82dbef7cad6a0,
     type: 3}
+  questCompleted: 0
   sentences:
   - Hello, my friend!
   - Look at my new flower.
@@ -4683,6 +4684,7 @@ MonoBehaviour:
   panicAnim: Run
   dialogPr: {fileID: 8574914208711548090, guid: 186882fc13e284a598c82dbef7cad6a0,
     type: 3}
+  questCompleted: 0
   sentences:
   - So how are you?
   - I'm all at work, already sweating.
@@ -8511,6 +8513,7 @@ MonoBehaviour:
   panicAnim: Run
   dialogPr: {fileID: 8574914208711548090, guid: 186882fc13e284a598c82dbef7cad6a0,
     type: 3}
+  questCompleted: 0
   sentences:
   - Hi, my little friend!
   - Have you seen my beautiful garden?
@@ -10627,6 +10630,7 @@ MonoBehaviour:
   panicAnim: Run
   dialogPr: {fileID: 8574914208711548090, guid: 186882fc13e284a598c82dbef7cad6a0,
     type: 3}
+  questCompleted: 0
   sentences:
   - Where have you been?
   - Have you seen anything unusual?
@@ -11725,6 +11729,63 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 401098256}
     m_Modifications:
+    - target: {fileID: 2061644401111450264, guid: 487c921694d3afd5d99f325f0b6a83b2,
+        type: 3}
+      propertyPath: sentences1.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061644401111450264, guid: 487c921694d3afd5d99f325f0b6a83b2,
+        type: 3}
+      propertyPath: sentences2.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061644401111450264, guid: 487c921694d3afd5d99f325f0b6a83b2,
+        type: 3}
+      propertyPath: astronaut2
+      value: 
+      objectReference: {fileID: 925401299}
+    - target: {fileID: 2061644401111450264, guid: 487c921694d3afd5d99f325f0b6a83b2,
+        type: 3}
+      propertyPath: dialogPr
+      value: 
+      objectReference: {fileID: 5369558178804348519, guid: 1f62133810269d5ddb42480d71673b17,
+        type: 3}
+    - target: {fileID: 2061644401111450264, guid: 487c921694d3afd5d99f325f0b6a83b2,
+        type: 3}
+      propertyPath: sentences1.Array.data[0]
+      value: Landing module greets the captain.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061644401111450264, guid: 487c921694d3afd5d99f325f0b6a83b2,
+        type: 3}
+      propertyPath: sentences1.Array.data[1]
+      value: Takeoff module malfunction detected.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061644401111450264, guid: 487c921694d3afd5d99f325f0b6a83b2,
+        type: 3}
+      propertyPath: sentences1.Array.data[2]
+      value: It is necessary to repair the takeoff module.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061644401111450264, guid: 487c921694d3afd5d99f325f0b6a83b2,
+        type: 3}
+      propertyPath: sentences2.Array.data[0]
+      value: The takeoff module is operational.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061644401111450264, guid: 487c921694d3afd5d99f325f0b6a83b2,
+        type: 3}
+      propertyPath: sentences2.Array.data[1]
+      value: Start procedure initialization ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061644401111450264, guid: 487c921694d3afd5d99f325f0b6a83b2,
+        type: 3}
+      propertyPath: sentences2.Array.data[2]
+      value: The hatch is open, captain. Take a seat in the pilot's seat. Let's start?
+        Y(es) / N(o)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061644401111450264, guid: 487c921694d3afd5d99f325f0b6a83b2,
+        type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6258366856179264706, guid: 487c921694d3afd5d99f325f0b6a83b2,
         type: 3}
       propertyPath: m_LocalPosition.x
