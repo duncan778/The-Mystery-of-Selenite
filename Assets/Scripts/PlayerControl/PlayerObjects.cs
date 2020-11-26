@@ -11,11 +11,11 @@ public class PlayerObjects : PlayerManager
     public GameObject iconFruit;
     public GameObject iconWrench;
 
-    public int Coins { get; set; }
-    public bool Scafandr { get; set; }
-    public bool Helmet { get; set; }
-    public bool Fruit { get; set; }
-    public bool Wrench { get; set; }
+    public int Coins { get; set; } //= 11;
+    public bool Scafandr { get; set; } //= true;
+    public bool Helmet { get; set; } //= true;
+    public bool Fruit { get; set; } //= true;
+    public bool Wrench { get; set; } // = true;
 
     private GameObject currentStayOn = null;
 

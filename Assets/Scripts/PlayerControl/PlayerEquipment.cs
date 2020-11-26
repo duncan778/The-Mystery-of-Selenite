@@ -8,7 +8,13 @@ public class PlayerEquipment : PlayerManager
     public GameObject scafandr;
     [SerializeField] float walkSpeed = 3.75f;
     [SerializeField] float runSpeed = 7.5f;
-    bool isSelenit;
+    private bool isSelenit;
+    public bool IsSelenit
+    {
+        get { return isSelenit; }
+        set { isSelenit = value; }
+    }
+    
 
     private PlayerObjects playerObjects;
 
@@ -26,7 +32,7 @@ public class PlayerEquipment : PlayerManager
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (isSelenit)
+            if (IsSelenit)
             {
                 SetScafandr();
             }
@@ -39,7 +45,7 @@ public class PlayerEquipment : PlayerManager
 
     void SetSelenit()
     {
-        isSelenit = true;
+        IsSelenit = true;
         playerAn = selenit.GetComponent<Animator>();
         speed = runSpeed;
         selenit.SetActive(true);
@@ -51,7 +57,7 @@ public class PlayerEquipment : PlayerManager
     {
         if (playerObjects.Helmet || playerObjects.Scafandr)
         {
-            isSelenit = false;
+            IsSelenit = false;
             if (playerObjects.Scafandr)
             {
                 scafandr.SetActive(true);

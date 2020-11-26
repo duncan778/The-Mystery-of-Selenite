@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelenitNPC : MonoBehaviour
+public class NPC : MonoBehaviour
 {
     public NPCState SelenitState { get; set; }
     public Transform[] wayPoints;
     [SerializeField] float speed = 1;
 
-    public Transform comparePoint1;
+    public Transform workPoint;
 
     private float currentTime;
-    [SerializeField] float idleTime = 3;
+    [SerializeField] float pauseTime = 3;
+    [SerializeField] string workAnim;
 
     CurveMotion selenit1;
     private Animator NPCAnimator;
@@ -28,16 +29,20 @@ public class SelenitNPC : MonoBehaviour
     [SerializeField] GameObject gameObjectOn = null;
 
     private PlayerObjects playerObjects;
+    private PlayerEquipment playerEquipment;
+
+    [SerializeField] bool iSelenit;
 
     void Start()
     {
         NPCAnimator = GetComponent<Animator>();
-        SelenitState = NPCState.Idle;
+        SelenitState = NPCState.Work;
         selenit1 = new CurveMotion(this.gameObject, wayPoints);
         selenit1.MoveSetup(speed, forward: true, cycled: true);
-        selenit1.RotateToPoint(comparePoint1);
+        selenit1.RotateToPoint(workPoint);
         currentTime = Time.time;
         playerObjects = GameObject.Find("Player").GetComponent<PlayerObjects>();
+        playerEquipment = GameObject.Find("Player").GetComponent<PlayerEquipment>();
     }
 
     void Update()
@@ -48,22 +53,35 @@ public class SelenitNPC : MonoBehaviour
             {
                 case NPCState.Walk:
                 {
-                    bool result = selenit1.Move(comparePoint1);
+                    bool result = selenit1.Move(workPoint);
                     if (result)
                     {
-                        SelenitState = NPCState.Idle;
-                        selenit1.RotateToPoint(comparePoint1);
+                        SelenitState = NPCState.Work;
+                        selenit1.RotateToPoint(workPoint);
                         NPCAnimator.SetBool("Walk", false);
+                        NPCAnimator.SetBool(workAnim, true);
                         currentTime = Time.time;
+                    }
+                }
+                break;
+
+                case NPCState.Work:
+                {
+                    if (Time.time - currentTime > pauseTime)
+                    {
+                        NPCAnimator.SetBool(workAnim, false);
+                        NPCAnimator.SetBool("Walk", true);
+                        SelenitState = NPCState.Walk;
                     }
                 }
                 break;
 
                 case NPCState.Idle:
                 {
-                    if (Time.time - currentTime > idleTime)
+                    if (Time.time - currentTime > pauseTime)
                     {
                         NPCAnimator.SetBool("Walk", true);
+                        NPCAnimator.SetBool(workAnim, false);
                         SelenitState = NPCState.Walk;
                     }
                 }
@@ -82,18 +100,23 @@ public class SelenitNPC : MonoBehaviour
                             if (gameObjectOn != null)
                             {
                                 gameObjectOn.SetActive(true);
+                                gameObjectOn.transform.position = new Vector3(transform.position.x,
+                                                                              gameObjectOn.transform.position.y,
+                                                                              transform.position.z);
                             }
                             questCompleted = true;
                         }
                         Destroy(dialog);
                         SelenitState = NPCState.Walk;
                         NPCAnimator.SetBool("Walk", true);
+                        NPCAnimator.SetBool(workAnim, false);
                     }
                     else if (Input.GetKeyDown(KeyCode.N))
                     {
                         Destroy(dialog);
                         SelenitState = NPCState.Walk;
                         NPCAnimator.SetBool("Walk", true);
+                        NPCAnimator.SetBool(workAnim, false);
                     }
                 }
                 break;
@@ -110,13 +133,35 @@ public class SelenitNPC : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {
+    {   
         if (other.CompareTag("Player") && !questCompleted) 
         {
+            //Panic Test
+            if (iSelenit) //for Selenit NPC
+            {
+                if (playerObjects.Scafandr && !playerEquipment.IsSelenit)
+                {
+                    //Panic Action
+                    return;
+                }
+                
+            }
+            else //for Astronaut NPC
+            {
+                if (playerEquipment.IsSelenit || (!playerEquipment.IsSelenit && playerObjects.Scafandr && !playerObjects.Helmet)
+                                              || (!playerEquipment.IsSelenit && !playerObjects.Scafandr && playerObjects.Helmet))
+                {
+                    //Panic action
+                    return;
+                }
+                
+            }
+
             dialog = Instantiate(dialogPr);
             dialog.SetSentences(sentences);
             SelenitState = NPCState.Talk;
             NPCAnimator.SetBool("Walk", false);
+            NPCAnimator.SetBool(workAnim, false);
         }
     }
 
@@ -127,6 +172,7 @@ public class SelenitNPC : MonoBehaviour
             Destroy(dialog);
             SelenitState = NPCState.Walk;
             NPCAnimator.SetBool("Walk", true);
+            NPCAnimator.SetBool(workAnim, false);
         }
     }
 }
