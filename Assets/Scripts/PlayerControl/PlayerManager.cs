@@ -9,10 +9,12 @@ public class PlayerManager : MonoBehaviour
     protected static CharacterController playerCC;
     protected static float speed;
     protected static bool isOnGround;
+    protected static AudioSource playerSFX;
 
     private void Awake()
     {
         playerCC = GetComponent<CharacterController>();
+        playerSFX = GetComponent<AudioSource>();
     }
 
 }

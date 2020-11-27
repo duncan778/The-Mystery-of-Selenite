@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class StartModule : MonoBehaviour
 {
+    private AudioSource moduleSFX;
+    public AudioClip engineSound;
+
     [SerializeField] Dialog dialogPr = null;
     private Dialog dialog;
     [SerializeField] string[] sentences1;
@@ -27,6 +30,7 @@ public class StartModule : MonoBehaviour
         playerObjects = GameObject.Find("Player").GetComponent<PlayerObjects>();
         playerEquipment = GameObject.Find("Player").GetComponent<PlayerEquipment>();
         player = playerObjects.gameObject;
+        moduleSFX = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -45,7 +49,7 @@ public class StartModule : MonoBehaviour
                 player.SetActive(false);
                 player.transform.parent = transform;
                 flames.SetActive(true); //Engines start VFX
-                
+                moduleSFX.PlayOneShot(engineSound, 1);
             }
             
         }
@@ -60,9 +64,10 @@ public class StartModule : MonoBehaviour
         if (moving)
         {
             transform.Translate(Vector3.up * speed * speed * Time.deltaTime);
-            if (transform.position.y >= 50)
+            if (transform.position.y >= 70)
             {
                 Time.timeScale = 0;
+                moduleSFX.Stop();
                 gameOverPanel.transform.GetChild(0).gameObject.GetComponent<Text>().text = "Mission Complete! Congratulations!";
                 gameOverPanel.SetActive(true);
             }

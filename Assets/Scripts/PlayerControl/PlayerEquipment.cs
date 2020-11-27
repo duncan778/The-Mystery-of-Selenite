@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerEquipment : PlayerManager
 {
+    public AudioClip equipSound;
+
     public GameObject selenit;
     public GameObject scafandr;
     [SerializeField] float walkSpeed = 3.75f;
@@ -45,6 +47,7 @@ public class PlayerEquipment : PlayerManager
 
     void SetSelenit()
     {
+        GetComponent<PlayerMovingCC>().StepTime = 0.24f;
         IsSelenit = true;
         playerAn = selenit.GetComponent<Animator>();
         speed = runSpeed;
@@ -57,9 +60,11 @@ public class PlayerEquipment : PlayerManager
     {
         if (playerObjects.Helmet || playerObjects.Scafandr)
         {
+            playerSFX.PlayOneShot(equipSound, 0.05f);
             IsSelenit = false;
             if (playerObjects.Scafandr)
             {
+                GetComponent<PlayerMovingCC>().StepTime = 0.48f;
                 scafandr.SetActive(true);
                 selenit.SetActive(false);
                 playerAn = scafandr.GetComponent<Animator>();

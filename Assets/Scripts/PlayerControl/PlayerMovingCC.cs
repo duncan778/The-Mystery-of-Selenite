@@ -7,11 +7,18 @@ using System;
 public class PlayerMovingCC : PlayerManager
 {
 
+    public AudioClip leftStepSound;
+    public AudioClip rightStepSound;
+    private bool leftStep = false;
+    public float StepTime { get; set; } = 0.24f;
+    float currentTime;
+
     Transform cameraTr;
 
     void Start()
     {
         cameraTr = GameObject.Find("Main Camera").transform;
+        currentTime = Time.time;
     }
 
     void FixedUpdate()
@@ -34,7 +41,7 @@ public class PlayerMovingCC : PlayerManager
             if ((v != 0 || x != 0) && !Input.GetKeyDown(KeyCode.Space))
                 {
                     playerAn.SetBool("Walk", true);
-                    // StepSound();
+                    StepSound();
                 }
             else if (!Input.GetKeyDown(KeyCode.Space))
             {
@@ -49,6 +56,21 @@ public class PlayerMovingCC : PlayerManager
         
     }
 
-
+    void StepSound()
+    {
+        if (Time.time-currentTime > StepTime)
+        {
+            if (leftStep)
+            {
+                playerSFX.PlayOneShot(rightStepSound, 0.05f);
+            }
+            else
+            {
+                playerSFX.PlayOneShot(leftStepSound, 0.05f);
+            }
+        currentTime = Time.time;
+        }
+        
+    }
 
 }

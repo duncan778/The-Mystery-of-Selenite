@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class NPC : MonoBehaviour
 {
+    private AudioSource npcSFX;
+    public AudioClip panicSound;
+    private bool isPanic = false;
+
     public GameObject gameOverPanel;
 
     public NPCState SelenitState { get; set; }
@@ -51,6 +55,7 @@ public class NPC : MonoBehaviour
         currentTime = Time.time;
         playerObjects = GameObject.Find("Player").GetComponent<PlayerObjects>();
         playerEquipment = GameObject.Find("Player").GetComponent<PlayerEquipment>();
+        npcSFX = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -131,7 +136,12 @@ public class NPC : MonoBehaviour
 
                 case NPCState.Panic:
                 {
-                    Debug.Log("Panic");
+                    if (!isPanic)
+                    {
+                        npcSFX.PlayOneShot(panicSound, 0.1f);
+                        isPanic = true;
+                    }
+                    
                     bool result = panicWay.Move(panicPoint);
                     if (result)
                     {

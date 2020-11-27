@@ -11,6 +11,9 @@ public class PlayerObjects : PlayerManager
     public GameObject iconFruit;
     public GameObject iconWrench;
 
+    public AudioClip pickUpSound;
+    [SerializeField] float pickUpVolume = 0.3f;
+
     public int Coins { get; set; } //= 11;
     public bool Scafandr { get; set; } //= true;
     public bool Helmet { get; set; } //= true;
@@ -42,6 +45,7 @@ public class PlayerObjects : PlayerManager
                     summ++;
                     if (summ == changeAmount)
                     {
+                        playerSFX.PlayOneShot(pickUpSound, pickUpVolume);
                         switch (objectName)
                         {
                             case "Coin":
@@ -83,35 +87,35 @@ public class PlayerObjects : PlayerManager
                 Debug.Log(Coins);
                 Destroy(currentStayOn);
                 Instantiate(iconCoin, gamePanel.transform);
-                
+                playerSFX.PlayOneShot(pickUpSound, pickUpVolume);
             }
             else if (currentStayOn.CompareTag("Helmet"))
             {
                 Helmet = true;
                 Destroy(currentStayOn);
                 Instantiate(iconHelmet, gamePanel.transform);
-                
+                playerSFX.PlayOneShot(pickUpSound, pickUpVolume);
             }
             else if (currentStayOn.CompareTag("Scafandr"))
             {
                 Scafandr = true;
                 Destroy(currentStayOn);
                 Instantiate(iconScafandr, gamePanel.transform);
-                
+                playerSFX.PlayOneShot(pickUpSound, pickUpVolume);
             }
             else if (currentStayOn.CompareTag("Wrench"))
             {
                 Wrench = true;
                 Destroy(currentStayOn);
                 Instantiate(iconWrench, gamePanel.transform);
-                
+                playerSFX.PlayOneShot(pickUpSound, pickUpVolume);
             }
             else if (currentStayOn.CompareTag("Fruit"))
             {
                 Fruit = true;
                 Destroy(currentStayOn);
                 Instantiate(iconFruit, gamePanel.transform);
-                
+                playerSFX.PlayOneShot(pickUpSound, pickUpVolume);
             }
 
         }

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Dialog : MonoBehaviour
 
 {
+    private AudioSource dialogSFX;
+    public AudioClip clickSound;
     private string[] sentences = {"привет", "Привет 2"};
     private int currentIndex = 0;
     [SerializeField] GameObject dialogPanelPr = null;
@@ -28,12 +30,14 @@ public class Dialog : MonoBehaviour
         dialogPanel = Instantiate(dialogPanelPr, GameObject.Find("Canvas").transform);
         dialogText = dialogPanel.transform.GetChild(0).GetComponent<Text>();
         dialogText.text = sentences[currentIndex];
+        dialogSFX = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
+            dialogSFX.PlayOneShot(clickSound, 0.7f);
             currentIndex++;
             if (currentIndex < sentences.Length)
             {

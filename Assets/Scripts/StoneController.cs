@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class StoneController : MonoBehaviour
 {
+    private AudioSource stoneSFX;
+    public AudioClip stoneSound;
+
+
     [SerializeField] static int maxPennantCount = 11;
     static int pennantCount = 0;
     static GameObject stoneContainer;
@@ -12,6 +16,8 @@ public class StoneController : MonoBehaviour
     private void Start() 
     {
         stoneContainer = GameObject.Find("Stones").gameObject;
+        pennantCount = 0;
+        stoneSFX = GetComponent<AudioSource>();
     }
 
     private void OpenStone() 
@@ -29,7 +35,8 @@ public class StoneController : MonoBehaviour
             }
         }
         //VFX
-        Destroy(gameObject);
+        stoneSFX.PlayOneShot(stoneSound, 0.4f);
+        Destroy(gameObject, 0.1f);
     }
 
     private void OnTriggerEnter(Collider other) 
