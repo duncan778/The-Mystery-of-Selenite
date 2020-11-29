@@ -2,4 +2,4 @@
 
 **Theme of the GameJam: MoonShot**
 
-No game name yet. 
+The name of game: The Mystery of Selenite
